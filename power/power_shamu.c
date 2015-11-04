@@ -251,7 +251,7 @@ static void sysfs_write(char *path, char *s)
     close(fd);
 }
 
-static void set_feature(struct power_module *module, feature_t feature, int state)
+static void set_feature(struct power_module *module __unused, feature_t feature, int state)
 {
     switch (feature) {
     case POWER_FEATURE_DOUBLE_TAP_TO_WAKE:
@@ -261,6 +261,14 @@ static void set_feature(struct power_module *module, feature_t feature, int stat
         ALOGW("Error setting the feature, it doesn't exist %d\n", feature);
         break;
     }
+}
+
+int get_feature(struct power_module *module __unused, feature_t feature)
+{
+    if (feature == POWER_FEATURE_SUPPORTED_PROFILES) {
+        return 3;
+    }
+    return -1;
 }
 
 static void power_hint( __attribute__((unused)) struct power_module *module,
@@ -307,4 +315,5 @@ struct power_module HAL_MODULE_INFO_SYM = {
     .setInteractive = power_set_interactive,
     .powerHint = power_hint,
     .setFeature = set_feature,
+    .getFeature = get_feature
 };
