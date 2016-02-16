@@ -441,8 +441,8 @@ service adspd /system/bin/adspd /dev/ttyHS3
 on property:sys.boot_completed=1
     start qcom-post-boot
 
-on property:ro.debuggable=1
-    start ss_ramdump
+#on property:ro.debuggable=1
+#    start ss_ramdump
 
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
