@@ -414,7 +414,7 @@
     <bool name="config_multiColorNotificationLed">true</bool> -->
 
     <!-- Default color for notification LED is green. -->
-    <color name="config_defaultNotificationColor">#0XFF00FF00</color>
+    <color name="config_defaultNotificationColor">#ff00ff00</color>
 
     <!-- Default value for led color when battery is medium charged
          We set this to blue as low is red and charged is green -->
