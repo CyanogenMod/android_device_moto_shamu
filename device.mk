@@ -221,6 +221,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.qmi.adb_logmask=0 \
     persist.radio.alt_mbn_name=tmo_alt.mbn
 
+# never dexopt the MotoSignature
+$(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
+
 # WiFi calling
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.iwlan.enable=true \
