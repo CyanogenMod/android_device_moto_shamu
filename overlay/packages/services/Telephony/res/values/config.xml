@@ -27,4 +27,6 @@
     <bool name="hac_enabled">true</bool>
     <!-- Allows the telephony HFA logic to run even if we're not in setup wizard. -->
     <bool name="config_allow_hfa_outside_of_setup_wizard">false</bool>
+    <!-- Show APN Settings for some CDMA carriers -->
+    <bool name="config_show_apn_setting_cdma">true</bool>
 </resources>
