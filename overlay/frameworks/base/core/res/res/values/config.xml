@@ -413,8 +413,8 @@
             32 - Camera
             64 - Volume rocker
          For example, a device with Home, Back and Menu keys would set this
-         config to 7.
-    <integer name="config_deviceHardwareWakeKeys">64</integer> -->
+         config to 7. -->
+    <integer name="config_deviceHardwareWakeKeys">64</integer>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
@@ -430,13 +430,13 @@
          We set this to blue as low is red and charged is green -->
     <integer name="config_notificationsBatteryMediumARGB">0xFF0000FF</integer>
 
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option
-    <bool name="config_intrusiveBatteryLed">true</bool> -->
+    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveBatteryLed">true</bool>
 
-    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors
-    <bool name="config_multiColorBatteryLed">true</bool> -->
+    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
+    <bool name="config_multiColorBatteryLed">true</bool>
 
     <!-- Do the battery/notification LEDs support pulsing?
-         Used to decide if we show pulse settings
-    <bool name="config_ledCanPulse">false</bool> -->
+         Used to decide if we show pulse settings -->
+    <bool name="config_ledCanPulse">false</bool>
 </resources>
