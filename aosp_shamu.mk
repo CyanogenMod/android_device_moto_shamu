@@ -25,15 +25,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 PRODUCT_NAME := aosp_shamu
 PRODUCT_DEVICE := shamu
-PRODUCT_BRAND := Google
-PRODUCT_MODEL := Shamu
+PRODUCT_BRAND := google
+PRODUCT_MODEL := Nexus 6
 PRODUCT_MANUFACTURER := motorola
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
 $(call inherit-product, device/moto/shamu/device.mk)
 $(call inherit-product-if-exists, vendor/motorola/shamu/shamu-vendor.mk)
-
-PRODUCT_NAME := aosp_shamu
 
 PRODUCT_PACKAGES += \
     Launcher3
