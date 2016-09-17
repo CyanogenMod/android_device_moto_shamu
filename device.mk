@@ -208,6 +208,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     keystore.msm8084
 
+# Camera
+PRODUCT_PACKAGES += \
+    Snap
+
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610
 
