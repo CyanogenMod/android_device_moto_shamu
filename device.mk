@@ -321,6 +321,7 @@ PRODUCT_PACKAGES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
     nfc_nci.bcm2079x.default \
     NfcNci \
     Tag
@@ -338,6 +339,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml \
     device/moto/shamu/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     device/moto/shamu/nfc/libnfc-brcm-20795a10.conf:system/etc/libnfc-brcm-20795a10.conf
+
+# NFCEE access control
+PRODUCT_COPY_FILES += \
+    device/moto/shamu/nfcee_access.xml:system/etc/nfcee_access.xml
 
 # Modem debugger
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
