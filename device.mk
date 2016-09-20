@@ -212,6 +212,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Snap
 
+# Doze
+PRODUCT_PACKAGES += \
+    MotoDoze
+
 # Gello
 PRODUCT_PACKAGES += \
     Gello
