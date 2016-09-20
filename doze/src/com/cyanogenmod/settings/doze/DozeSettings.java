@@ -41,10 +41,8 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
 
     private SwitchPreference mAmbientDisplayPreference;
     private SwitchPreference mPickUpPreference;
-    private SwitchPreference mTiltAlwaysPreference;
     private SwitchPreference mHandwavePreference;
     private SwitchPreference mPocketPreference;
-    private SwitchPreference mProximityAlwaysPreference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,19 +53,15 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
 
         // get shared preference
         mPreferences = mContext.getSharedPreferences("doze_settings", Activity.MODE_PRIVATE);
-        if (savedInstanceState == null && !mPreferences.getBoolean("first_help_shown", false)) {
-            showHelp();
-        }
+        //if (savedInstanceState == null && !mPreferences.getBoolean("first_help_shown", false)) {
+        //    showHelp();
+        //}
 
         mAmbientDisplayPreference =
             (SwitchPreference) findPreference(Utils.AMBIENT_DISPLAY_KEY);
         // Read from DOZE_ENABLED secure setting
         mAmbientDisplayPreference.setChecked(dozeEnabled);
         mAmbientDisplayPreference.setOnPreferenceChangeListener(this);
-
-        mTiltAlwaysPreference =
-            (SwitchPreference) findPreference(Utils.TILT_ALWAYS_KEY);
-        mTiltAlwaysPreference.setOnPreferenceChangeListener(this);
 
         mPickUpPreference =
             (SwitchPreference) findPreference(Utils.PICK_UP_KEY);
@@ -81,20 +75,13 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
             (SwitchPreference) findPreference(Utils.GESTURE_POCKET_KEY);
         mPocketPreference.setOnPreferenceChangeListener(this);
 
-        mProximityAlwaysPreference =
-            (SwitchPreference) findPreference(Utils.PROXIMITY_ALWAYS_KEY);
-        mProximityAlwaysPreference.setOnPreferenceChangeListener(this);
-
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-        updateAlwaysEnabledPreference();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        updateAlwaysEnabledPreference();
     }
 
     @Override
@@ -116,24 +103,15 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
             return true;
         } else if (Utils.PICK_UP_KEY.equals(key)) {
             mPickUpPreference.setChecked(value);
-            updateAlwaysEnabledPreference();
             Utils.startService(mContext);
-            return true;
-        } else if (Utils.TILT_ALWAYS_KEY.equals(key)) {
-            mTiltAlwaysPreference.setChecked(value);
             return true;
         } else if (Utils.GESTURE_HAND_WAVE_KEY.equals(key)) {
             mHandwavePreference.setChecked(value);
-            updateAlwaysEnabledPreference();
             Utils.startService(mContext);
             return true;
         } else if (Utils.GESTURE_POCKET_KEY.equals(key)) {
             mPocketPreference.setChecked(value);
-            updateAlwaysEnabledPreference();
             Utils.startService(mContext);
-            return true;
-        } else if (Utils.PROXIMITY_ALWAYS_KEY.equals(key)) {
-            mProximityAlwaysPreference.setChecked(value);
             return true;
         }
         return false;
@@ -166,13 +144,5 @@ public class DozeSettings extends PreferenceActivity implements OnPreferenceChan
     private void showHelp() {
         HelpDialogFragment fragment = new HelpDialogFragment();
         fragment.show(getFragmentManager(), "help_dialog");
-    }
-
-    private void updateAlwaysEnabledPreference() {
-        boolean tiltEnabled = Utils.pickUpEnabled(mContext);
-        boolean proximityEnabled = Utils.handwaveGestureEnabled(mContext)
-                || Utils.pocketGestureEnabled(mContext);
-        mTiltAlwaysPreference.setEnabled(tiltEnabled);
-        mProximityAlwaysPreference.setEnabled(proximityEnabled);
     }
 }
