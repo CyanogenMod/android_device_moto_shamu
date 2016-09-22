@@ -122,3 +122,5 @@ on property:dev.bootcomplete=1
     write /proc/sys/vm/page-cluster 0
     write /proc/sys/vm/swappiness 0
     write /proc/sys/vm/vfs_cache_pressure 80
+
+    write /sys/block/dm-0/queue/read_ahead_kb 256
