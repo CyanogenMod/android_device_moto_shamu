@@ -156,12 +156,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=false \
-    audio.offload.buffer.size.kb=32 \
-    audio.offload.video=true \
-    audio.offload.multiple.enabled=false \
-    audio.offload.gapless.enabled=true \
-    audio.offload.pcm.16bit.enable=true \
-    audio.offload.pcm.24bit.enable=true \
     ro.audio.monitorRotation=true \
     drm.service.enabled=true \
     ro.facelock.black_timeout=400 \
@@ -170,9 +164,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.facelock.lively_timeout=2500 \
     ro.facelock.est_max_time=600 \
     ro.facelock.use_intro_anim=false
-
-# Enable enhanced offload features
-AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
 
 # Audio effects
 PRODUCT_PACKAGES += \
