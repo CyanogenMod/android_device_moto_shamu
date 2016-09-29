@@ -65,62 +65,27 @@ on property:dev.bootcomplete=1
     write /sys/module/msm_pm/modes/cpu1/retention/idle_enabled 1
     write /sys/module/msm_pm/modes/cpu2/retention/idle_enabled 1
     write /sys/module/msm_pm/modes/cpu3/retention/idle_enabled 1
-
     write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
 
     # cpufreq settings
     write /sys/kernel/msm_limiter/scaling_governor interactive
-    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:40000 1700000:20000"
     write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1497600
     write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1500000:90 1800000:70"
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
-
-    write /sys/kernel/msm_limiter/scaling_governor impulse
-    write /sys/devices/system/cpu/cpufreq/impulse/above_hispeed_delay "19000 1400000:39000 1700000:19000 2100000:79000"
-    write /sys/devices/system/cpu/cpufreq/impulse/go_hispeed_load 90
-    write /sys/devices/system/cpu/cpufreq/impulse/hispeed_freq 1497600
-    write /sys/devices/system/cpu/cpufreq/impulse/io_is_busy 1
-    write /sys/devices/system/cpu/cpufreq/impulse/max_freq_hysteresis 79000
-    write /sys/devices/system/cpu/cpufreq/impulse/min_sample_time 19000
-    write /sys/devices/system/cpu/cpufreq/impulse/powersave_bias 1
-    write /sys/devices/system/cpu/cpufreq/impulse/target_loads "85 1500000:90 1800000:70 2100000:95"
-    write /sys/devices/system/cpu/cpufreq/impulse/timer_rate 20000
-
     write /sys/module/cpu_boost/parameters/input_boost_freq 1497600
     write /sys/module/cpu_boost/parameters/input_boost_ms 800
-    write /sys/module/cpu_boost/parameters/hotplug_boost 1
-    write /sys/module/cpu_boost/parameters/wakeup_boost 1
-
     write /dev/cpuctl/cpu.notify_on_migrate 0
+
+    write /sys/kernel/msm_limiter/mpd_enabled 0
     write /sys/module/state_notifier/parameters/enabled 1
     write /sys/kernel/state_helper/enabled 1
     write /sys/kernel/state_helper/batt_level_cri 1
     write /sys/kernel/state_helper/batt_level_eco 15
-
-    write /sys/module/msm_thermal/core_control/enabled 1
-
-    write /sys/block/mmcblk0/queue/scheduler bfq
-
-    # Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
-
-    # Per-process reclaim
-    write /sys/module/process_reclaim/parameters/enable_process_reclaim 1
-    write /sys/module/process_reclaim/parameters/pressure_min 10
-    write /sys/module/process_reclaim/parameters/per_swap_size 1024
-    write /sys/module/process_reclaim/parameters/pressure_max 70
-    write /sys/module/process_reclaim/parameters/swap_opt_eff 30
-
-    # VM tuning
-    write /proc/sys/vm/dirty_background_ratio 20
-    write /proc/sys/vm/dirty_expire_centisecs 200
-    write /proc/sys/vm/dirty_ratio 40
-    write /proc/sys/vm/page-cluster 0
-    write /proc/sys/vm/swappiness 0
-    write /proc/sys/vm/vfs_cache_pressure 80
-
-    write /sys/block/dm-0/queue/read_ahead_kb 256
